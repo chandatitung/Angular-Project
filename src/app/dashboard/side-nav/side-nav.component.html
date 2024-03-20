@@ -1,0 +1,23 @@
+<div class="content-container">
+    <div id="bdSidebar" class="side-navbar d-flex flex-column flex-shrink-0 text-white offcanvas-md offcanvas-start">
+        <div class="text-light">
+            <div class="app-title d-flex align-items-center justify-content-start">
+                <h5>DASHBOARD</h5>
+            </div>
+            <div class="menus">
+                <ul class="menu-items">
+                    <ng-container *ngFor="let m of menus">
+                        <li class="menu-btn" style="list-style: none;">
+                            <button class="btn" (click)="onClickMenu(m.url)" routerLinkActive="active">
+                                <span class="ms-2">{{m.title}}</span>
+                            </button>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+        <div class="logout-button mt-auto">
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+    </div>
+</div>

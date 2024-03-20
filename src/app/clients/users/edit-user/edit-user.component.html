@@ -1,0 +1,104 @@
+<div class="container">
+  <h5>Personal Details</h5>
+  <hr />
+  <form [formGroup]="users" (ngSubmit)="onSubmit()">
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="fullname" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullname" formControlName="fullname">
+              <div *ngIf="users.get('fullname')?.invalid && users.get('fullname')?.touched" class="text-danger">
+                  <small>please fill the required field</small>
+              </div>
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+              <div *ngIf="users.get('email')?.invalid && users.get('email')?.touched" class="text-danger">
+                  <small>please fill the required field</small>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" formControlName="address">
+              <div *ngIf="users.get('address')?.invalid && users.get('address')?.touched" class="text-danger">
+                  <small>please fill the required field</small>
+              </div>
+          </div>
+          <div class="col-md-6 mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <input type="text" class="form-control" id="gender" formControlName="gender">
+              <div *ngIf="users.get('gender')?.invalid && users.get('gender')?.touched" class="text-danger">
+                  <small>please fill the required field</small>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" id="age" formControlName="age">
+              <div *ngIf="users.get('age')?.invalid && users.get('age')?.touched" class="text-danger">
+                  <small>please fill the required field</small>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="d-flex justify-content-between">
+              <div>
+                  <h5>Family Details</h5>
+              </div>
+          </div>
+      </div>
+      <hr />
+      <div formArrayName="familyDetails">
+          <div *ngFor="let item of familyDetails.controls; let i = index" [formGroupName]="i">
+              <div class="row">     
+                  <div class="col-md-6 mb-3">
+                      <label for="fullname{{ i }}" class="form-label">Full Name</label>
+                      <input type="text" class="form-control" id="fullname{{ i }}" formControlName="fullname">
+                      <div *ngIf="familyDetails.at(i).get('fullname')?.invalid && familyDetails.at(i).get('fullname')?.touched" class="text-danger">
+                          <small>please fill the required field</small>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                      <label for="email{{ i }}" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="email{{ i }}" formControlName="email">
+                      <div *ngIf="familyDetails.at(i).get('email')?.invalid && familyDetails.at(i).get('email')?.touched" class="text-danger">
+                          <small>please fill the required field</small>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6 mb-3">
+                      <label for="address{{ i }}" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="address{{ i }}" formControlName="address">
+                      <div *ngIf="familyDetails.at(i).get('address')?.invalid && familyDetails.at(i).get('address')?.touched" class="text-danger">
+                          <small>please fill the required field</small>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                      <label for="gender{{ i }}" class="form-label">Gender</label>
+                      <input type="text" class="form-control" id="gender{{ i }}" formControlName="gender">
+                      <div *ngIf="familyDetails.at(i).get('gender')?.invalid && familyDetails.at(i).get('gender')?.touched" class="text-danger">
+                          <small>please fill the required field</small>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6 mb-3">
+                      <label for="age{{ i }}" class="form-label">Age</label>
+                      <input type="number" class="form-control" id="age{{ i }}" formControlName="age">
+                      <div *ngIf="familyDetails.at(i).get('age')?.invalid && familyDetails.at(i).get('age')?.touched" class="text-danger">
+                          <small>please fill the required field</small>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+     
+      <div class="button">
+          <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+  </form>
+</div>

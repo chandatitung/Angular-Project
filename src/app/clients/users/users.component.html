@@ -1,0 +1,127 @@
+<div class="container">
+  <h5>Personal Details</h5>
+  <hr />
+  <form [formGroup]="users" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="fullname" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullname" formControlName="fullname">
+       <div *ngIf="users.get('personalDetails.fullname')?.invalid && users.get('personalDetails.fullname')?.touched" class="text-danger">
+          <small>please fill the required field</small>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" formControlName="email">
+        <div *ngIf="users.get('personalDetails.email')?.invalid && users.get('personalDetails.email')?.touched" class="text-danger">
+          <small>please fill the required field</small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" formControlName="address">
+        <div *ngIf="users.get('address')?.invalid && users.get('address')?.touched" class="text-danger">
+          <small>please fill the required field</small>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <input type="text" class="form-control" id="gender" formControlName="gender">
+        <div *ngIf="users.get('gender')?.invalid && users.get('gender')?.touched" class="text-danger">
+          <small>please fill the required field</small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="text" class="form-control" id="age" formControlName="age">
+        <div *ngIf="users.get('age')?.invalid && users.get('age')?.touched" class="text-danger">
+          <small>please fill the required field</small>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5>Family Details</h5>
+        </div>
+        <div class="btn btn-primary" (click)="addFamilyDetails()"><b>Add more</b></div>
+
+      </div>
+
+    </div>
+    <hr />
+    @for (item of familyDetails.controls; track item; let i =$index) {
+    <div formArrayName="familyDetails">
+      <div [formGroupName]="i">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>{{i+1}} <b>Family Details</b></p>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-danger float-end" (click)="onDelete(i)">Delete</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="fullname" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullname" formControlName="fullname">
+            <div *ngIf="item.get('fullname')?.invalid && item.get('fullname')?.touched" class="text-danger">
+              <small>please fill the required field</small>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="Email" formControlName="email">
+            <div *ngIf="item.get('email')?.invalid && item.get('email')?.touched" class="text-danger">
+              <small>please fill the required field</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" formControlName="address">
+            <div *ngIf="item.get('address')?.invalid && item.get('address')?.touched" class="text-danger">
+              <small>please fill the required field</small>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <input type="text" class="form-control" id="gender" formControlName="gender">
+            <div *ngIf="item.get('gender')?.invalid && item.get('gender')?.touched" class="text-danger">
+              <small>please fill the required field</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="text" class="form-control" id="age" formControlName="age">
+            <div *ngIf="item.get('age')?.invalid && item.get('age')?.touched" class="text-danger">
+              <small>please fill the required field</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="button d-flex justify-content-between">
+    <div class="button ">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="button">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+
+
+</form>
+
+</div>

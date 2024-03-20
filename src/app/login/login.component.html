@@ -1,0 +1,32 @@
+<div class="body" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <form>
+        <div class="rounded-4 border border-light border-3 p-4" style="width: 350px; background: #FFFFFF; min-height: 400px;">
+            <form [formGroup]="loginDetails"  (ngSubmit)="onClickSubmit(loginDetails.value)">
+                <h2 class="text-center">Login</h2>
+
+                <label class="mt-3">Username</label>
+                <input type="text" formControlName="username" class="form-control" name="username"
+                    placeholder="Enter your username">
+                <div *ngIf="loginDetails.get('username')?.invalid && loginDetails.get('username')?.touched"
+                    class="text-danger">
+                    <small>please fill the required field</small>
+                </div>
+
+                <label class="mt-3">Password</label>
+                <div class="password-input-container">
+                    <input type="text" formControlName="password"
+                        class="form-control password-input" name="password" placeholder="Enter your password" />
+                        <div *ngIf="loginDetails.get('password')?.invalid && loginDetails.get('password')?.touched"
+                        class="text-danger">
+                        <small>please fill the required field</small>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary text-light mt-4 w-100 fw-bold"
+                   >Login</button>
+                </div>
+            </form>
+        </div>
+    </form>
+</div>
